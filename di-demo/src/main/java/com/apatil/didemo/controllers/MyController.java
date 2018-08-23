@@ -1,12 +1,19 @@
 package com.apatil.didemo.controllers;
 
+import com.apatil.didemo.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
 
-    public String sayHello(){
-        System.out.println("Hello!");
-        return "foo";
+    private GreetingService greetingService;
+
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String hello(){
+        System.out.println("MyController : Hello!");
+        return greetingService.sayGreeting();
     }
 }
